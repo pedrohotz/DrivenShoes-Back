@@ -24,7 +24,7 @@ async function postCheckout (req, res) {
             SELECT * FROM checkout ORDER BY id DESC LIMIT 1
         `);
 
-        const products = req.body;
+        const products = req.body; 
 
         let total_price = 0;
 

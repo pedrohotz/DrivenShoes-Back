@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --setupFiles dotenv/config",
-    "start": "set NODE_ENV=test && node src/server.js"
+    "test": "npx jest --setupFiles dotenv/config",
+    "start": "set NODE_ENV=test && node src/server.js",
+    "startl": "NODE_ENV=test node src/server.js"
   },
   "keywords": [],
   "author": "",

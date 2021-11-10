@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt';
 describe("POST /sign-in", ()=>{
     const password = bcrypt.hashSync("senhadojoaozin",12);
     beforeAll(async ()=> {
-        connection.query(`INSERT INTO "public.users" (name,email,password) VALUES ('joaozin','joaozindoteste@email.com','${password}')`);
+        connection.query(`INSERT INTO users (name,email,password) VALUES ('joaozin','joaozindoteste@email.com','${password}')`);
     })
 
 
@@ -32,7 +32,7 @@ describe("POST /sign-in", ()=>{
     });
     
     afterAll(async ()=> {
-        connection.query(`DELETE FROM "public.users" WHERE name='joaozin'`);
+        connection.query(`DELETE FROM users WHERE name='joaozin'`);
     })
 
 });
@@ -61,7 +61,7 @@ describe("POST /sign-up", () =>{
     });
 
     afterAll(async () =>{
-        connection.query(`DELETE FROM "public.users" WHERE name='Joaozin'`)
+        connection.query(`DELETE FROM users WHERE name='Joaozin'`)
     })
 
 

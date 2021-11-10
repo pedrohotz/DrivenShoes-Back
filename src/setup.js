@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
-console.log(process.env.NODE_ENV);
-const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
+
+const envFile = process.env.NODE_ENV === 'prod' ? '.env' : '.env.test';
 
 dotenv.config({
     path: envFile

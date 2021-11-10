@@ -19,14 +19,14 @@ async function register(req,res){
         return res.sendStatus(400);
     }
 
-    const user = await connection.query('SELECT * FROM "public.users" WHERE email = $1',[email]);
+    const user = await connection.query('SELECT * FROM users WHERE email = $1',[email]);
     if(user.rowCount > 0){
         return res.sendStatus(400);
     }
 
     try {
         const hash = bcrypt.hashSync(password,12);
-        await connection.query('INSERT INTO "public.users" (name,email,password) VALUES ($1,$2,$3)',[nome,email,hash]);
+        await connection.query('INSERT INTO users (name,email,password) VALUES ($1,$2,$3)',[nome,email,hash]);
         res.sendStatus(201);
     } catch (error) {
         console.log(error);

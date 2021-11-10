@@ -32,8 +32,38 @@ describe("POST /sign-in", ()=>{
     });
     
     afterAll(async ()=> {
-        console.log("FInalizando")
         connection.query(`DELETE FROM "public.users" WHERE name='joaozin'`);
     })
+
+});
+
+
+describe("POST /sign-up", () =>{
+
+    it("returns 201 for valid register", async () => {
+        const body = {
+            nome: "Joaozin",
+            email: "joaozin@email.com",
+            password: "123456"
+        }
+        const result = await supertest(app).post('/sign-up').send(body);
+        expect(result.status).toEqual(201);
+    });
+
+    it("returns 400 for invalid register", async () => {
+        const body = {
+            nome: "Joaozin",
+            email : "joaozin.com",
+            password: "123456"
+        }
+        const result = await supertest(app).post('/sign-up').send(body);
+        expect(result.status).toEqual(400);
+    });
+
+    afterAll(async () =>{
+        connection.query(`DELETE FROM "public.users" WHERE name='Joaozin'`)
+    })
+
+
 
 });

@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test node src/app.js",
+    "test": "NODE_ENV=test node src/server.js",
     "start": "set NODE_ENV=test && node src/server.js"
   },
   "keywords": [],

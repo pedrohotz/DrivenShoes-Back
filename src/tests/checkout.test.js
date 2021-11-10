@@ -1,6 +1,6 @@
 import supertest from 'supertest';
-import connection from '../src/database/database.js';
-import app from '../src/app.js'
+import app from '../app.js';
+import connection from '../database/database.js';
 
 describe("POST /checkout", () => {
     
@@ -26,7 +26,6 @@ describe("POST /checkout", () => {
                     .send(body)
                     .set("Authorization", '12345');
         const status = result.status;
-        console.log(result)
         expect(status).toEqual(201);
     });
 

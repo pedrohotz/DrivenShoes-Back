@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest --setupFiles dotenv/config",
+    "test": "npx jest --setupFiles ./src/setup.js",
     "start": "set NODE_ENV=test && node src/server.js",
     "startl": "NODE_ENV=test node src/server.js"
   },

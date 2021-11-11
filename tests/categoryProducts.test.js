@@ -12,4 +12,14 @@ describe('GET /category-products', () => {
     const { status } = result;
     expect(status).toEqual(200);
   });
+
+  it('returns 400 for invalid search', async () => {
+    const body = {
+      name: 'co',
+    };
+
+    const result = await supertest(app).get('/category-products').send(body);
+    const { status } = result;
+    expect(status).toEqual(400);
+  });
 });

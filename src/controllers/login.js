@@ -26,10 +26,27 @@ async function login(req, res) {
       return res.sendStatus(404);
     }
 
-    const encryptedPass = user.rows[0].password;
-    const isValid = bcrypt.compareSync(password, encryptedPass);
-    if (!isValid) {
-      return res.sendStatus(401);
+    try {
+      // eslint-disable-next-line no-shadow
+      const user = await connection.query('SELECT * FROM users WHERE email = $1', [email]);
+      if (user.rowCount === 0) {
+        return res.sendStatus(404);
+      }
+
+      const encryptedPass = user.rows[0].password;
+      const isValid = bcrypt.compareSync(password, encryptedPass);
+      if (!isValid) {
+        return res.sendStatus(401);
+      }
+      const token = uuid();
+      await connection.query('INSERT INTO sessions (user_id,token) VALUES ($1,$2)', [user.rows[0].id, token]);
+
+      res.send({
+        token,
+      });
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
     }
     const token = uuid();
     await connection.query('INSERT INTO "public.sessions" (user_id,token) VALUES ($1,$2)', [user.rows[0].id, token]);

@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import supertest from 'supertest';
 import bcrypt from 'bcrypt';
-import app from '../app.js';
-import connection from '../database/database.js';
+import app from '../src/app.js';
+import connection from '../src/database/database.js';
 
 describe('POST /sign-in', () => {
   const password = bcrypt.hashSync('senhadojoaozin', 12);

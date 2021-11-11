@@ -11,6 +11,13 @@ const registerValidation = joi.object({
   password: joi.string().alphanum().min(5).required(),
 });
 
+const cardValidation = joi.object({
+  card_number: joi.string().min(16).required(),
+  security_number: joi.string().min(3).required(),
+  expiration_date: joi.date().required(),
+  name: joi.string().min(3).max(30).required(),
+});
+
 const categoryValidation = joi.object({
   name: joi.string().min(3).max(30).required(),
 });
@@ -18,5 +25,6 @@ const categoryValidation = joi.object({
 export {
   loginValidation,
   registerValidation,
+  cardValidation,
   categoryValidation,
 };

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import { getCheckout, postCheckout } from './controllers/checkout.js';
+import { postPayment, getCards } from './controllers/payment.js';
 
 import { login } from './controllers/login.js';
 import { register } from './controllers/register.js';
@@ -19,6 +20,9 @@ app.post('/checkout', postCheckout);
 
 app.post('/sign-in',login);
 app.post('/sign-up',register);
+
+app.post('/payment', postPayment);
+app.get('/payment', getCards);
 
 
 

@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.get('/products', getProducts);
 app.get('/categories', getCategories);
-app.get('/category-products', getCategoryProducts);
+app.post('/category-products', getCategoryProducts);
 app.post('/sign-in', login);
 app.post('/sign-up', register);
 app.get('/checkout', getCheckout);

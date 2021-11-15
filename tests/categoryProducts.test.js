@@ -5,7 +5,7 @@ import app from '../src/app.js';
 describe('GET /category-products', () => {
   it('returns 200 for valid search', async () => {
     const body = {
-      name: 'corrida',
+      name: "corrida",
     };
 
     const result = await supertest(app).get('/category-products').send(body);
@@ -15,7 +15,7 @@ describe('GET /category-products', () => {
 
   it('returns 400 for invalid search', async () => {
     const body = {
-      name: 'co',
+      name: "co",
     };
 
     const result = await supertest(app).get('/category-products').send(body);

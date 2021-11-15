@@ -12,8 +12,8 @@ describe('POST /sign-in', () => {
 
   it('returns 200 for valid login', async () => {
     const body = {
-      email: 'joaozindoteste@email.com',
-      password: 'senhadojoaozin',
+      email: "joaozindoteste@email.com",
+      password: "senhadojoaozin",
     };
     const result = await supertest(app).post('/sign-in').send(body);
     expect(result.status).toEqual(200);
@@ -21,15 +21,15 @@ describe('POST /sign-in', () => {
 
   it('returns 404 for invalid login', async () => {
     const body = {
-      email: 'joaozin2@email.com',
-      password: '123456',
+      email: "joaozin2@email.com",
+      password: "123456",
     };
     const result = await supertest(app).post('/sign-in').send(body);
     expect(result.status).toEqual(404);
   });
 
   afterAll(async () => {
-    connection.query('DELETE FROM users WHERE name=\'joaozin\'');
+    connection.query(`DELETE FROM users WHERE name= 'joaozin'`);
   });
 });
 

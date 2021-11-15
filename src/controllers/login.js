@@ -22,7 +22,6 @@ async function login(req, res) {
 
   try {
       const user = await connection.query('SELECT * FROM users WHERE email = $1', [email]);
-      const name = user.rows[0].name;
       if (user.rowCount === 0) {
         return res.sendStatus(404);
       }
@@ -33,7 +32,7 @@ async function login(req, res) {
       }
       const token = uuid();
       await connection.query('INSERT INTO sessions (user_id,token) VALUES ($1,$2)', [user.rows[0].id, token]);
-
+      const name = user.rows[0].name;
       res.send({
         name,
         token,

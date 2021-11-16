@@ -5,20 +5,20 @@ import app from '../src/app.js';
 describe('GET /category-products', () => {
   it('returns 200 for valid search', async () => {
     const body = {
-      name: "corrida",
+      name: 'corrida',
     };
 
-    const result = await supertest(app).get('/category-products').send(body);
+    const result = await supertest(app).post('/category-products').send(body);
     const { status } = result;
     expect(status).toEqual(200);
   });
 
   it('returns 400 for invalid search', async () => {
     const body = {
-      name: "co",
+      name: 'co',
     };
 
-    const result = await supertest(app).get('/category-products').send(body);
+    const result = await supertest(app).post('/category-products').send(body);
     const { status } = result;
     expect(status).toEqual(400);
   });
